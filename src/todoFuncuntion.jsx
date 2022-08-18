@@ -6,20 +6,19 @@ import { WiMoonAltThirdQuarter } from "react-icons/wi";
 
 let blackLight = {
   bg: "black",
+  text: "white",
 };
 
 let whiteLight = {
   bg: "white",
+  text: "black",
 };
 
 function Todo() {
   let [task, setTask] = useState("");
   let [arr, setArr] = useState([]);
 
-  let [mode, setMode] = useState({
-    bg: "black",
-    text: "white",
-  });
+  let [mode, setMode] = useState(blackLight);
 
   let [theme, setTheme] = useState("light");
 
@@ -41,7 +40,7 @@ function Todo() {
               value={task}
               onChange={(e) => setTask(e.target.value)}
               placeholder="Enter the  Task"
-              style={{ backgroundColor: mode.bg }}
+              style={{ backgroundColor: mode.bg, color: mode.text }}
             />
             <button
               id="butt"

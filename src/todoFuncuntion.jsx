@@ -5,11 +5,13 @@ import bgImage from "./images/task.jpg";
 import { WiMoonAltThirdQuarter } from "react-icons/wi";
 
 let blackLight = {
+  title: "black",
   bg: "black",
   text: "white",
 };
 
 let whiteLight = {
+  title: "white",
   bg: "white",
   text: "black",
 };
@@ -19,8 +21,6 @@ function Todo() {
   let [arr, setArr] = useState([]);
 
   let [mode, setMode] = useState(blackLight);
-
-  let [theme, setTheme] = useState("light");
 
   return (
     <>
@@ -51,13 +51,15 @@ function Todo() {
             >
               Add
             </button>
-
             <WiMoonAltThirdQuarter
               id="themeButton"
               size={40}
               onClick={() => {
-                setMode(theme === "dark" ? blackLight : whiteLight);
-                setTheme(theme === "dark" ? "light" : "dark");
+                if (mode.title === "black") {
+                  setMode(whiteLight);
+                } else {
+                  setMode(blackLight);
+                }
               }}
             />
           </div>

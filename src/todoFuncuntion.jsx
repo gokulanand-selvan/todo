@@ -16,7 +16,8 @@ let whiteLight = {
   text: "black",
 };
 
-function Todo() {
+
+export function Todo() {
   let [task, setTask] = useState("");
   let [arr, setArr] = useState([]);
 
@@ -73,4 +74,3 @@ function Todo() {
     </>
   );
 }
-export default Todo;

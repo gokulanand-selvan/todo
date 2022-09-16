@@ -1,8 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import { useEffect } from "react";
 import ListName from "./todoAdd";
 import bgImage from "./images/task.jpg";
 import { WiMoonAltThirdQuarter } from "react-icons/wi";
+
+
 
 let blackLight = {
   title: "black",
@@ -20,8 +23,48 @@ let whiteLight = {
 export function Todo() {
   let [task, setTask] = useState("");
   let [arr, setArr] = useState([]);
-
   let [mode, setMode] = useState(blackLight);
+
+  const fetchList = () => {
+    const requestOptions = {
+      method: "GET",
+      headers: { 'Content-Type': 'application/json' },
+    }
+
+    fetch('https://ragu-hotel-api.herokuapp.com/api/todo', requestOptions)
+      .then(response => response.json())
+
+      .then(data => setArr((data)));
+
+  }
+
+  useEffect(() => {
+    fetchList();
+  }, []);
+
+  const onAdd = () => {
+    const requestOptions = {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ data: task })
+    }
+
+    fetch('https://ragu-hotel-api.herokuapp.com/api/todo', requestOptions)
+      .then(response => response.json())
+      .then(data => fetchList())
+  }
+
+  // const onClickDelete = () => {
+  //   const requestOptions = {
+  //     method: "DELETE",
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({ data: arr.id })
+  //   }
+  //   fetch('https://ragu-hotel-api.herokuapp.com/api/todo/${_id}', requestOptions)
+  //     .teh(response => response.json)
+  //     .then(data => fetchList())
+  // }
+
 
   return (
     <>
@@ -46,8 +89,9 @@ export function Todo() {
             <button
               id="butt"
               onClick={() => {
-                setArr([task, ...arr]);
+                // setArr([task, ...arr]);
                 setTask("");
+                onAdd()
               }}
             >
               Add
@@ -66,9 +110,12 @@ export function Todo() {
           </div>
         </div>
         <div className="setarray" style={{ backgroundColor: mode.bg }}>
-          {arr.map((list, index) => (
-            <ListName list={list} setArr={setArr} key={index} arr={arr} />
-          ))}
+          {arr.map((list, index) => {
+            // console.log(list);
+            return (
+              <ListName list={list} key={index} arr={arr} fetchList={fetchList} />
+            )
+          })}
         </div>
       </div>
     </>

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import ListName from "./todoAdd";
 import bgImage from "./images/task.jpg";
 import { WiMoonAltThirdQuarter } from "react-icons/wi";
+import Button from "@mui/material/Button"
 
 
 
@@ -24,6 +25,7 @@ export function Todo() {
   let [task, setTask] = useState("");
   let [arr, setArr] = useState([]);
   let [mode, setMode] = useState(blackLight);
+  // const [loading, setLoading] = useState(true)
 
   const fetchList = () => {
     const requestOptions = {
@@ -34,7 +36,7 @@ export function Todo() {
     fetch('https://ragu-hotel-api.herokuapp.com/api/todo', requestOptions)
       .then(response => response.json())
 
-      .then(data => setArr((data)));
+      .then(data => { setArr((data)) });
 
   }
 
@@ -54,16 +56,6 @@ export function Todo() {
       .then(data => fetchList())
   }
 
-  // const onClickDelete = () => {
-  //   const requestOptions = {
-  //     method: "DELETE",
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({ data: arr.id })
-  //   }
-  //   fetch('https://ragu-hotel-api.herokuapp.com/api/todo/${_id}', requestOptions)
-  //     .teh(response => response.json)
-  //     .then(data => fetchList())
-  // }
 
 
   return (
@@ -86,7 +78,7 @@ export function Todo() {
               placeholder="Enter the  Task"
               style={{ backgroundColor: mode.bg, color: mode.text }}
             />
-            <button
+            <Button
               id="butt"
               onClick={() => {
                 // setArr([task, ...arr]);
@@ -95,7 +87,7 @@ export function Todo() {
               }}
             >
               Add
-            </button>
+            </Button>
             <WiMoonAltThirdQuarter
               id="themeButton"
               size={40}

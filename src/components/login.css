@@ -1,0 +1,13 @@
+.parentlogin {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-content: flex-start;
+  background-color: lightgray;
+  /* background-image: linear-gradient(
+    rgba(245, 70, 66, 0.75),
+    rgba(8, 83, 156, 0.75)
+  ); */
+}

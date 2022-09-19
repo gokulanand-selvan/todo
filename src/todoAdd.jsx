@@ -1,3 +1,4 @@
+import { Box, Button } from "@mui/material";
 function ListName(props) {
 
 
@@ -12,19 +13,17 @@ function ListName(props) {
       })
   }
 
-
   return (
-    <div className="content" style={{ display: "flex" }} key={props.index}>
+    <Box className="content" style={{ display: "flex" }} key={props.index}>
       {/* <p>{props.list}</p> */}
       <p> {props.list.data}</p>
-      <button
-        id="dlt"
+      <Button
+        variant="contained"
         onClick={onClickDelete}
-
       >
         delete
-      </button>
-    </div >
+      </Button>
+    </Box >
   );
 }
 export default ListName;

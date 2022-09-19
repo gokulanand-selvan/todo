@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { Box, Button, Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { TextField } from "@mui/material";
+import { Table } from "@mui/material";
 
 export const SignUp = () => {
     const [username, setusername] = useState("")
@@ -40,17 +43,37 @@ export const SignUp = () => {
         fetch('https://ragu-hotel-api.herokuapp.com/api/signup', requestOptions)
             .then(response => response.json())
             .then(data => fetchData());
-
-
     }
 
-    return (
-        <div className="parentsign">
+    // const changeHandeler = (e) => {
+    //     value = { username, psw, ph }
+    //     setusername(e.target.value)
+    //     setph(e.target.value)
+    //     setph(e.target.value)
+    // }
 
-            <button onClick={() => navigate(-1)}> Home </button>
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <label>
+    return (
+        <Box className="parentsign"
+            sx={{
+                width: '100%',
+                height: "100%",
+                backgroundColor: 'lightgrey',
+                textAlign: 'center',
+                justifyContent: "center",
+            }}
+        >
+
+            <Button onClick={() => navigate(-1)}> Home </Button>
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: 'center',
+                    justifyContent: "center",
+                }}
+            >
+                <form onSubmit={handleSubmit} >
+                    {/* <label>
                         <h1>User Name</h1>
                         <input type={"text"} value={username} onChange={(e) => setusername(e.target.value)} placeholder={"User Name"} />
                     </label>
@@ -61,14 +84,60 @@ export const SignUp = () => {
                     <label>
                         <h1>Phone Number</h1>
                         <input type={'number'} value={ph} onChange={(e) => setph(e.target.value)} />
-                    </label>
+                    </label> */}
+
+                    <TextField
+                        margin="normal"
+                        color="secondary"
+                        label="username"
+                        value={username}
+                        onChange={(e) => setusername(e.target.value)}
+                    />
+
+                    <TextField
+                        margin="normal"
+                        color="secondary"
+                        label="Password"
+                        value={psw}
+                        onChange={(e) => setpsw(e.target.value)}
+
+                    />
+
+                    <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                        margin="normal"
+                        color="secondary"
+                        label="PhoneNumber"
+                        value={ph}
+                        onChange={(e) => setph(e.target.value)}
+                    />
+                    <br />
+                    <Button variant="contained" type="submit" onClick={() => { onClickSignUp(); setusername(""); setpsw(''); setph("") }}> Sign Up </Button>
                 </form>
-            </div>
-            <br />
-            <button type="submit" onClick={onClickSignUp}> Sign Up </button>
-            <ul >
-                {postId.map((list, key) => <li key={key}>{list.username} {list.password}</li>)}
-            </ul>
-        </div>
+            </Box>
+
+            {/* {postId.map((list, key) => <p key={key}>{list.username} {list.password}</p>)} */}
+            <Box>
+                <TableContainer component={Paper} >
+                    <Table sx={{ minWidth: 10 }} aria-label="simple table">
+                        <TableHead
+                            sx={{
+                                backgroundColor: "green",
+                                borderColor: "red",
+                            }}>
+                            <TableRow>
+                                <TableCell>Username</TableCell>
+                                <TableCell >Password</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            <TableCell>
+                                {postId.map((list, key) => <p key={key}>{list.username}</p>)}
+                            </TableCell>
+                            <TableCell> {postId.map((list, key) => <p key={key}> {list.password}</p>)}</TableCell>
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </Box>
+        </Box >
     );
 };

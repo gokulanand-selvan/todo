@@ -7,7 +7,6 @@ import { WiMoonAltThirdQuarter } from "react-icons/wi";
 import Button from "@mui/material/Button"
 
 
-
 let blackLight = {
   title: "black",
   bg: "black",
@@ -55,8 +54,6 @@ export function Todo() {
       .then(response => response.json())
       .then(data => fetchList())
   }
-
-
 
   return (
     <>

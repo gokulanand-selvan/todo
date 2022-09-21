@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { Box, Button, CircularProgress, Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Box, Button, Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Table } from "@mui/material";
 import { Container } from "@mui/system";
 import IconButton from '@mui/material/IconButton';
-import { Password, Phone } from "@mui/icons-material";
+// import CircularProgress from "@mui/material";
+// import { Password, Phone } from "@mui/icons-material";
 
 export const SignUp = () => {
     const [username, setusername] = useState("")
@@ -14,7 +15,14 @@ export const SignUp = () => {
     const [ph, setph] = useState("")
     const [showpassword, setShowpassword] = useState(null)
     const [err, setErr] = useState(false)
-    const [loading, setLading] = useState(false)
+    // useState({
+    // username: false,
+    // psw: false,
+    // ph: false
+    // })
+    const [errPsw, setErrPsw] = useState(false)
+    const [errPh, setErrPh] = useState(false)
+    // const [loading, setLoading] = useState(false)
     const [postId, setPostId] = useState([])
 
     const navigate = useNavigate();
@@ -31,6 +39,7 @@ export const SignUp = () => {
         fetch('https://ragu-hotel-api.herokuapp.com/api/alluser', requestOptions)
             .then(response => response.json())
             .then(data => setPostId((data)));
+
     }
 
     useEffect(() => {
@@ -39,11 +48,24 @@ export const SignUp = () => {
 
 
     const onClickSignUp = () => {
-        if (username === "" || Password === "" || Phone === "") {
+        if (username === "") {
             setErr(true)
+            return
+        }
+        if (psw === "") {
+            setErrPsw(true)
+            return
+        }
+
+        if (ph === "") {
+            setErrPh(true)
+            return
         }
         else {
             setErr(false)
+            setErrPsw(false)
+            setErrPh(false)
+
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -54,8 +76,6 @@ export const SignUp = () => {
                 .then(data => fetchData());
         }
     }
-
-
     return (
         <Box className="parentsign"
             sx={{
@@ -90,6 +110,7 @@ export const SignUp = () => {
 
                     <TextField
                         error={err}
+                        id="username"
                         margin="normal"
                         color="secondary"
                         label="username"
@@ -98,7 +119,8 @@ export const SignUp = () => {
                     />
                     <br />
                     <TextField
-                        error={err}
+                        error={errPsw}
+                        id="password"
                         margin="normal"
                         color="secondary"
                         label="Password"
@@ -109,17 +131,18 @@ export const SignUp = () => {
                     />
                     <br />
                     <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-                        error={err}
+                        error={errPh}
+                        id="phone"
                         margin="normal"
                         color="secondary"
-                        label="PhoneNumber"
+                        label="Phone"
                         value={ph}
                         onChange={(e) => setph(e.target.value)}
                     />
                 </form>
-                {/* <CircularProgress /> */}
                 <br />
                 <Button variant="contained" type="submit" onClick={() => { onClickSignUp(); setusername(""); setpsw(''); setph("") }}> Sign Up </Button>
+
             </Box>
             <IconButton
                 aria-label="toggle password visibility"></IconButton>
@@ -150,6 +173,7 @@ export const SignUp = () => {
 
                                 {postId.map((list, index) => (
                                     <TableRow
+                                        key={index}
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
                                         <TableCell component="th" scope="row" >

@@ -4,6 +4,9 @@ import Button from '@mui/material/Button';
 import { TextField } from "@mui/material";
 import './login.css'
 import { Box } from "@mui/system";
+// import raindrops from "./components/raindrops.jpg"
+import bgImage from "./images/task.jpg";
+
 
 
 export const Login = () => {
@@ -17,7 +20,12 @@ export const Login = () => {
     const navigate = useNavigate();
 
     return (
-        <Box className="parentlogin">
+        <Box className="parentlogin"
+            style={{
+                backgroundImage: `url(${bgImage})`,
+            }}
+        >
+
 
             <h1 >Welcome</h1>
             <>

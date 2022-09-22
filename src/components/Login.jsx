@@ -5,7 +5,7 @@ import { TextField } from "@mui/material";
 import './login.css'
 import { Box } from "@mui/system";
 // import raindrops from "./components/raindrops.jpg"
-import bgImage from "./images/task.jpg";
+// import bgImage from "./images/task.jpg";
 
 
 
@@ -21,9 +21,9 @@ export const Login = () => {
 
     return (
         <Box className="parentlogin"
-            style={{
-                backgroundImage: `url(${bgImage})`,
-            }}
+        // style={{
+        //     backgroundImage: `url(${bgImage})`,
+        // }}
         >
 
 

@@ -85,6 +85,14 @@ export const SignUp = () => {
                 textAlign: 'center',
                 justifyContent: "center",
             }}
+            style={{
+                background: "rgb(2,0,36) linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(236,235,233,1) 0%, rgba(130,209,195,1) 100%, rgba(130,209,195,1) 100%)"
+
+
+                // background: "rgb(2,0,36) linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(221,126,214,0.6337885495995272) 41%, rgba(0,212,255,1) 100%)"
+
+                // background: " rgb(2,0,36) linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(38,218,43,1) 41%, rgba(0,212,255,1) 100%)"
+            }}
         >
 
             <Button onClick={() => navigate(-1)}> Home </Button>
@@ -151,18 +159,25 @@ export const SignUp = () => {
             <Box>
                 <Container maxWidth="sx">
 
-                    <TableContainer component={Paper}>
+                    <TableContainer
+                        style={{
+                            // background: "rgb(2,0,36) linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(236,235,233,1) 0%, rgba(0,255,153,1) 100%)"
+
+                            background: "rgb(2,0,36) linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(236,235,233,1) 0%, rgba(130,209,195,1) 100%, rgba(130,209,195,1) 100%)"
+
+                        }}
+                        component={Paper}>
                         <Table sx={{ minWidth: 10 }}
                             aria-label="simple table">
                             <TableHead
                                 sx={{
-                                    backgroundColor: "green",
-                                    borderColor: "red",
+                                    backgroundColor: "lightblue",
+                                    // border: "solid 1px"
                                 }}>
                                 <TableRow>
-                                    <TableCell>Username</TableCell>
-                                    <TableCell >Password</TableCell>
-                                    <TableCell>SHOW</TableCell>
+                                    <TableCell><b>Username</b></TableCell>
+                                    <TableCell ><b>Password</b></TableCell>
+                                    <TableCell><b>SHOW</b></TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>

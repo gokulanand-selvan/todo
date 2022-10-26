@@ -5,9 +5,8 @@ import { Box, Button, Paper, TableBody, TableCell, TableContainer, TableHead, Ta
 import { TextField } from "@mui/material";
 import { Table } from "@mui/material";
 import { Container } from "@mui/system";
-import IconButton from '@mui/material/IconButton';
-// import CircularProgress from "@mui/material";
-// import { Password, Phone } from "@mui/icons-material";
+import crow from "E:/A React Projects/todo/src/images/windmill.jpg"
+
 
 export const SignUp = () => {
     const [username, setusername] = useState("")
@@ -77,25 +76,20 @@ export const SignUp = () => {
         }
     }
     return (
-        <Box className="parentsign"
+        <Box
             sx={{
                 width: '100%',
                 height: "100%",
                 backgroundColor: 'lightgrey',
                 textAlign: 'center',
-                justifyContent: "center",
-            }}
+            }
+            }
             style={{
-                background: "rgb(2,0,36) linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(236,235,233,1) 0%, rgba(130,209,195,1) 100%, rgba(130,209,195,1) 100%)"
-
-
-                // background: "rgb(2,0,36) linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(221,126,214,0.6337885495995272) 41%, rgba(0,212,255,1) 100%)"
-
-                // background: " rgb(2,0,36) linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(38,218,43,1) 41%, rgba(0,212,255,1) 100%)"
+                background: `url(${crow})`
+                // background: "rgb(2,0,36) linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(236,235,233,1) 0%, rgba(130,209,195,1) 100%, rgba(130,209,195,1) 100%)"
             }}
         >
-
-            <Button onClick={() => navigate(-1)}> Home </Button>
+            <Button variant="outlined" onClick={() => navigate(-1)}>Home</Button>
             <Box
                 sx={{
                     alignItems: 'center',
@@ -103,18 +97,6 @@ export const SignUp = () => {
                 }}
             >
                 <form onSubmit={handleSubmit} >
-                    {/* <label>
-                        <h1>User Name</h1>
-                        <input type={"text"} value={username} onChange={(e) => setusername(e.target.value)} placeholder={"User Name"} />
-                    </label>
-                    <label>
-                        <h1>Password</h1>
-                        <input type={"password"} value={psw} onChange={(e) => setpsw(e.target.value)} placeholder={"Password"} />
-                    </label>
-                    <label>
-                        <h1>Phone Number</h1>
-                        <input type={'number'} value={ph} onChange={(e) => setph(e.target.value)} />
-                    </label> */}
 
                     <TextField
                         error={err}
@@ -152,27 +134,21 @@ export const SignUp = () => {
                 <Button variant="contained" type="submit" onClick={() => { onClickSignUp(); setusername(""); setpsw(''); setph("") }}> Sign Up </Button>
 
             </Box>
-            <IconButton
-                aria-label="toggle password visibility"></IconButton>
-            {/* {postId.map((list, key) => <p key={key}>{list.username} {list.password}</p>)} */}
+
             <br />
             <Box>
                 <Container maxWidth="sx">
 
                     <TableContainer
+                        component={Paper}
                         style={{
-                            // background: "rgb(2,0,36) linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(236,235,233,1) 0%, rgba(0,255,153,1) 100%)"
-
-                            background: "rgb(2,0,36) linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(236,235,233,1) 0%, rgba(130,209,195,1) 100%, rgba(130,209,195,1) 100%)"
-
-                        }}
-                        component={Paper}>
+                            background: `url(${crow})`
+                        }} >
                         <Table sx={{ minWidth: 10 }}
                             aria-label="simple table">
                             <TableHead
                                 sx={{
                                     backgroundColor: "lightblue",
-                                    // border: "solid 1px"
                                 }}>
                                 <TableRow>
                                     <TableCell><b>Username</b></TableCell>
@@ -181,11 +157,6 @@ export const SignUp = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {/* <TableCell>
-                                {postId.map((list, key) => <p key={key}>{list.username}</p>)}
-                            </TableCell>
-                            <TableCell> {postId.map((list, key) => <p key={key}> {list.password}</p>)}</TableCell> */}
-
                                 {postId.map((list, index) => (
                                     <TableRow
                                         key={index}

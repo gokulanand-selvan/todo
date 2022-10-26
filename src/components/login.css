@@ -1,10 +1,19 @@
 .parentlogin {
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   align-content: flex-start;
+
+  /* background: linear-gradient(
+    90.13deg,
+    #d1aad7 0.11%,
+    #c88bc4 25.06%,
+    #7b8fdd 50%,
+    #86bff2 74.8%,
+    #bbdef2 99.76%
+  ); */
+
   /* background-color: lightgray; */
   /* background-image: linear-gradient(
     rgba(245, 70, 66, 0.75),
@@ -18,5 +27,5 @@
     rgba(193, 193, 207, 1) 41%,
     rgba(0, 212, 255, 1) 100%
   ); */
-  background-image: "background.png";
+  /* background-image: "background.png"; */
 }

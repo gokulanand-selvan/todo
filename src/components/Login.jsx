@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
+// import './login.css'
+import { Box } from "@mui/system";
+// import backgroundImage from "./background.png";
 import { TextField } from "@mui/material";
-import './login.css'
-import { Box, height } from "@mui/system";
-// import bgImage from "./images/task.jpg";
-// import raindrops from "./raindrops.jpg";
-// import raindrops from "./components/raindrops.jpg"
-import backgroundImage from "./background.png";
-
-
+import kboard from "E:/A React Projects/todo/src/images/todo6.jpg"
 
 export const Login = () => {
     const [name, setName] = useState("");
@@ -22,70 +18,86 @@ export const Login = () => {
     const navigate = useNavigate();
 
     return (
-        <Box sx={{
-            backgroundImage: `url(${backgroundImage})`,
-            height: "100vh"
-        }} >
+        <>
+            <Box sx={{}}> </Box>
             <Box className="parentlogin"
-                // sx={{
-                //     // backgroundImage: `url(${bgImage})`,
-                //     background: { backgroundImage }
-                // }}
-                sx={{}}
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexDirection: 'column',
+                    // alignContent: 'flex-start',
+                }}
+                style={{
+                    backgroundImage: `url(${kboard})`, backgroundSize: "100% 107%", backgroundRepeat: "no-repeat", height: "100vh"
+                }}
             >
-                {/* <img src={raindrops} alt="pp" /> */}
-
-                <h1 >Welcome</h1>
+                {/* <h1 style={{ fontFamily: "Josefin Sans", letterSpacing: "3px", paddingBottom: "50px" }} >T o D o</h1> */}
                 <>
-                    {/* <form onSubmit={handleSubmit}>
-                    <label>
-                        <h1>UserName</h1>
-                        <input
-                            id="username"
-                            type={"text"}
-                            placeholder={'UserName'}
-                            value={name}
-                            onChange={(e) => setName(e.target.value)} />
-                    </label>
-                    <br />
-                    <label>
-                        <h1>Password</h1>
-                        <input
-                            type={"password"}
-                            placeholder={'Password'}
-                            value={passcode}
-                            onChange={(e) => setPasscode(e.target.value)} />
-                    </label>
-                    <br />
-                </form> */}
+                    <form onSubmit={handleSubmit}
+                        style={{
+                            paddingTop: "11vh"
+                        }}>
+                        <label>
+                            <h1 style={{ fontFamily: "Josefin Sans", color: "lightgray" }}>Username:</h1>
+                            <TextField
+                                sx={{ background: "white" }}
+                                color="secondary"
+                                variant="filled"
+                                fullWidth
+                                id="username"
+                                type={"text"}
+                                placeholder={'UserName'}
+                                value={name}
+                                onChange={(e) => setName(e.target.value)} />
+                        </label>
+                        <br />
+                        <label>
+                            <h1 style={{ fontFamily: "Josefin Sans", color: "lightgray" }}>Password:</h1>
+                            <TextField
+                                sx={{ background: "white" }}
+                                fullWidth
+                                variant="filled"
+                                color="secondary"
+                                type={"password"}
+                                placeholder={'Password'}
+                                value={passcode}
+                                onChange={(e) => setPasscode(e.target.value)} />
+                            <br />
+                            <br />
+                            <br />
+                            <Button sx={{ width: "441px", background: "##00ffff" }} onSubmit={handleSubmit} variant="contained" type="submit" onClick={() => navigate("/todo")}>LogIn</Button>
+                        </label>
+                    </form>
 
-
-                    <TextField
-                        margin="normal"
-                        label="username"
+                    {/* <p>USERNAME</p>
+                    <input
+                    margin="normal"
+                    label="username"
                         color="secondary"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         focused />
                     <br />
-                    <TextField
+                    <p>PASSWORD</p>
+                    <input
                         type={"password"}
                         label='Password'
                         color="secondary"
                         value={passcode}
                         onChange={(e) => setPasscode(e.target.value)}
-                        focused />
+                    sx={{ border: " 3px solid #000000", }} /> */}
 
-                </>
-                <br />
-                <Button onSubmit={handleSubmit} variant="contained" type="submit" onClick={() => navigate("/todo")}>LogIn</Button>
-                <>
-                    <br />
-                    <br />
-                    <br />
-                    <Button onSubmit={handleSubmit} variant="contained" type="submit" color="success" onClick={() => navigate("/signUp")}>SignUp</Button>
+                    <>
+                        <p style={{ color: "lightgray" }}>
+                            <b> (OR) </b>
+                        </p>
+
+                        <Button sx={{ width: "441px", background: "#009000" }} onSubmit={handleSubmit} variant="contained" type="submit" color="success" onClick={() => navigate("/signUp")}>SignUp</Button>
+
+                    </>
                 </>
             </Box>
-        </Box>
+        </>
     );
 }

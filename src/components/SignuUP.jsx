@@ -90,7 +90,7 @@ export const SignUp = () => {
                 // background: "rgb(2,0,36) linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(236,235,233,1) 0%, rgba(130,209,195,1) 100%, rgba(130,209,195,1) 100%)"
             }}
         >
-            <Button variant="outlined" onClick={() => navigate(-1)}>Home</Button>
+            <Button sx={{background:"floralwhite"}} variant="outlined" onClick={() => navigate(-1)}>Home</Button>
             <Box
                 sx={{
                     alignItems: 'center',

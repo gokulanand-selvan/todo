@@ -5,7 +5,7 @@ import { Box, Button, Paper, TableBody, TableCell, TableContainer, TableHead, Ta
 import { TextField } from "@mui/material";
 import { Table } from "@mui/material";
 import { Container } from "@mui/system";
-import crow from "E:/A React Projects/todo/src/images/windmill.jpg"
+import crow from "/Users/gokulanand/Documents/react/todo/src/images/windmill.jpg"
 
 
 export const SignUp = () => {
@@ -85,7 +85,8 @@ export const SignUp = () => {
             }
             }
             style={{
-                background: `url(${crow})`
+                
+                backgroundImage: `url(${crow})`,
                 // background: "rgb(2,0,36) linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(236,235,233,1) 0%, rgba(130,209,195,1) 100%, rgba(130,209,195,1) 100%)"
             }}
         >
@@ -117,7 +118,6 @@ export const SignUp = () => {
                         type={"password"}
                         value={psw}
                         onChange={(e) => setpsw(e.target.value)}
-
                     />
                     <br />
                     <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
@@ -132,13 +132,10 @@ export const SignUp = () => {
                 </form>
                 <br />
                 <Button variant="contained" type="submit" onClick={() => { onClickSignUp(); setusername(""); setpsw(''); setph("") }}> Sign Up </Button>
-
             </Box>
-
             <br />
             <Box>
                 <Container maxWidth="sx">
-
                     <TableContainer
                         component={Paper}
                         style={{

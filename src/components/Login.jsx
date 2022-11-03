@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import { Box } from "@mui/system";
 // import backgroundImage from "./background.png";
 import { TextField } from "@mui/material";
-import kboard from "E:/A React Projects/todo/src/images/todo6.jpg"
+import kboard from "/Users/gokulanand/Documents/react/todo/src/images/todo6.jpg"
 
 export const Login = () => {
     const [name, setName] = useState("");

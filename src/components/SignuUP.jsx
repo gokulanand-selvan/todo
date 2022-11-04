@@ -5,7 +5,7 @@ import { Box, Button, Paper, TableBody, TableCell, TableContainer, TableHead, Ta
 import { TextField } from "@mui/material";
 import { Table } from "@mui/material";
 import { Container } from "@mui/system";
-import crow from "/Users/gokulanand/Documents/react/todo/src/images/windmill.jpg"
+import crow from "./windmill.jpg"
 
 
 export const SignUp = () => {

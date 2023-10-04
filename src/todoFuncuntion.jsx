@@ -1,11 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import ListName from "./todoAdd";
 import bgImage from "./images/task.jpg";
 import { WiMoonAltThirdQuarter } from "react-icons/wi";
-import Button from "@mui/material/Button"
-
+import Button from "@mui/material/Button";
 
 let blackLight = {
   title: "black",
@@ -19,42 +18,49 @@ let whiteLight = {
   text: "black",
 };
 
-
 export function Todo() {
   let [task, setTask] = useState("");
   let [arr, setArr] = useState([]);
   let [mode, setMode] = useState(blackLight);
   // const [loading, setLoading] = useState(true)
 
-  const fetchList = () => {
-    const requestOptions = {
-      method: "GET",
-      headers: { 'Content-Type': 'application/json' },
+  // const fetchList = () => {
+  //   const requestOptions = {
+  //     method: "GET",
+  //     headers: { 'Content-Type': 'application/json' },
+  //   }
+
+  //   fetch('https://ragu-hotel-api.herokuapp.com/api/todo', requestOptions)
+  //     .then(response => response.json())
+
+  //     .then(data => { setArr((data)) });
+
+  // }
+
+  // useEffect(() => {
+  //   fetchList();
+  // }, []);
+
+  // const onAdd = () => {
+  //   const requestOptions = {
+  //     method: "POST",
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({ data: task })
+  //   }
+
+  //   fetch('https://ragu-hotel-api.herokuapp.com/api/todo', requestOptions)
+  //     .then(response => response.json())
+  //     .then(data => fetchList())
+  // }
+  const updateDelete = (sliced) => {
+    setArr((prev) => [...prev]);
+  };
+  const handleKeypress = (e) => {
+    if (e.keyCode === 13) {
+      setArr([task, ...arr]);
+      setTask("");
     }
-
-    fetch('https://ragu-hotel-api.herokuapp.com/api/todo', requestOptions)
-      .then(response => response.json())
-
-      .then(data => { setArr((data)) });
-
-  }
-
-  useEffect(() => {
-    fetchList();
-  }, []);
-
-  const onAdd = () => {
-    const requestOptions = {
-      method: "POST",
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ data: task })
-    }
-
-    fetch('https://ragu-hotel-api.herokuapp.com/api/todo', requestOptions)
-      .then(response => response.json())
-      .then(data => fetchList())
-  }
-
+  };
   return (
     <>
       <div className="main" style={{ backgroundColor: mode.bg }}>
@@ -74,17 +80,20 @@ export function Todo() {
               onChange={(e) => setTask(e.target.value)}
               placeholder="Enter the  Task"
               style={{ backgroundColor: mode.bg, color: mode.text }}
+              onKeyDown={handleKeypress}
             />
-            <Button
-              id="butt"
-              onClick={() => {
-                // setArr([task, ...arr]);
-                setTask("");
-                onAdd()
-              }}
-            >
-              Add
-            </Button>
+            {task.length !== 0 ? (
+              <Button
+                id="butt"
+                onClick={() => {
+                  setArr([task, ...arr]);
+                  setTask("");
+                  // onAdd()
+                }}
+              >
+                Add
+              </Button>
+            ) : null}
             <WiMoonAltThirdQuarter
               id="themeButton"
               size={40}
@@ -102,8 +111,15 @@ export function Todo() {
           {arr.map((list, index) => {
             // console.log(list);
             return (
-              <ListName list={list} key={index} arr={arr} fetchList={fetchList} />
-            )
+              <ListName
+                list={list}
+                index={index}
+                arr={arr}
+                key={index}
+                updateDelete={updateDelete}
+                // fetchList={fetchList}
+              />
+            );
           })}
         </div>
       </div>
